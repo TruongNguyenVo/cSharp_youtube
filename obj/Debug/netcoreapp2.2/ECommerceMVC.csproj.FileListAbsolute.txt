@@ -28,3 +28,10 @@ D:\nguyen\đại học\HK 5\Đồ án Hệ thống thông tin 1\test\ECommerceMV
 D:\nguyen\đại học\HK 5\Đồ án Hệ thống thông tin 1\test\ECommerceMVC\ECommerceMVC\obj\Debug\netcoreapp2.2\ECommerceMVC.dll
 D:\nguyen\đại học\HK 5\Đồ án Hệ thống thông tin 1\test\ECommerceMVC\ECommerceMVC\obj\Debug\netcoreapp2.2\ECommerceMVC.pdb
 D:\nguyen\đại học\HK 5\Đồ án Hệ thống thông tin 1\test\ECommerceMVC\ECommerceMVC\obj\Debug\netcoreapp2.2\ECommerceMVC.csproj.CopyComplete
+D:\nguyen\đại học\HK 5\Đồ án Hệ thống thông tin 1\test\ECommerceMVC\ECommerceMVC\obj\Debug\netcoreapp2.2\Razor\Views\HangHoas\Create.g.cshtml.cs
+D:\nguyen\đại học\HK 5\Đồ án Hệ thống thông tin 1\test\ECommerceMVC\ECommerceMVC\obj\Debug\netcoreapp2.2\Razor\Views\HangHoas\Delete.g.cshtml.cs
+D:\nguyen\đại học\HK 5\Đồ án Hệ thống thông tin 1\test\ECommerceMVC\ECommerceMVC\obj\Debug\netcoreapp2.2\Razor\Views\HangHoas\Details.g.cshtml.cs
+D:\nguyen\đại học\HK 5\Đồ án Hệ thống thông tin 1\test\ECommerceMVC\ECommerceMVC\obj\Debug\netcoreapp2.2\Razor\Views\HangHoas\Edit.g.cshtml.cs
+D:\nguyen\đại học\HK 5\Đồ án Hệ thống thông tin 1\test\ECommerceMVC\ECommerceMVC\obj\Debug\netcoreapp2.2\Razor\Views\HangHoas\Index.g.cshtml.cs
+D:\nguyen\đại học\HK 5\Đồ án Hệ thống thông tin 1\test\ECommerceMVC\ECommerceMVC\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_LayoutCustomer.g.cshtml.cs
+D:\nguyen\đại học\HK 5\Đồ án Hệ thống thông tin 1\test\ECommerceMVC\ECommerceMVC\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_Footer.g.cshtml.cs
