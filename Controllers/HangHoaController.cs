@@ -37,5 +37,27 @@ namespace ECommerceMVC.Controllers
 
             return View(result);
         }
+        public IActionResult Search(string query)
+        {
+            //lay tat ca danh sach hang hoa
+            var hangHoas = db.HangHoa.AsQueryable();
+            if (query != null)
+            {
+                //lay danh sach san pham dua tren ten query
+                hangHoas = db.HangHoa.Where(p => p.TenHh.Contains(query));
+            }
+
+            var result = hangHoas.Select(p => new HangHoaViewModel
+            {
+                MaHH = p.MaHh,
+                TenHH = p.TenHh,
+                Gia = p.DonGia ?? 0, // co the bang 0
+                Hinh = p.Hinh ?? "",
+                MoTaNgan = p.MoTaDonVi ?? "",
+                TenLoai = p.MaLoaiNavigation.TenLoai // nhay qua bang loai lay ten loai                
+            });
+
+            return View(result);
+        }
     }
 }
