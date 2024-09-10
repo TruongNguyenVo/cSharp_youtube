@@ -6,6 +6,7 @@ using ECommerceMVC.Data;
 using Microsoft.AspNetCore.Mvc;
 
 using ECommerceMVC.ViewModels;
+using Microsoft.EntityFrameworkCore;
 
 namespace ECommerceMVC.Controllers
 {
@@ -58,6 +59,19 @@ namespace ECommerceMVC.Controllers
             });
 
             return View(result);
+        }
+        public IActionResult Detail(int id)
+        {
+            var data = db.HangHoa
+                .Include(p => p.MaLoaiNavigation)
+                .SingleOrDefault(p => p.MaHh == id);
+            if (data == null)
+            {
+                TempData["Message"] = "Sản phẩm không có mã";
+                return RedirectToAction("PageNotFound", "Home");
+            }
+
+            return View(data);
         }
     }
 }
