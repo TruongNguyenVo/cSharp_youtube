@@ -33,11 +33,16 @@ namespace ECommerceMVC
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-
+            // cau hinh database
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddDbContext<hshop2023Context>(options =>
         options.UseSqlServer(Configuration.GetConnectionString("HShop2023")));
-
+            //cau hinh session
+            services.AddDistributedMemoryCache();
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(20);
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -64,6 +69,9 @@ namespace ECommerceMVC
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+            //su dung session
+            app.UseSession();
+
         }
     }
 }

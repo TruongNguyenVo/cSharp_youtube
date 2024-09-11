@@ -83,7 +83,15 @@ thêm trong startup.cs:             services.AddDbContext<hshop2023Context>(opti
 - tao View (TimKiemPanel) trong Shared
 - them (@await Html.PartialAsync("_TimKiemPanel")) trong detail
 - đẩy thẻ chứa tìm kiếm trong DanhSachHangHoa vao _TimKiemPanel
-- 
+////// đưa hàng vào giỏ hàng theo session
+- tao CartViewModel trong ViewModel
+- them code session trong startup.cs
+- tao foulder helper
+- tao file sessionExtensions 
+- tao Controller (CartController)
+- them phuong thuc AddCart
+- chen chuc hang them vao gio hang cua ProductItem (asp-action="AddToCart" asp-controller="Cart" asp-route-id="@itemMaHH)
+- neu co so luong thi dat name giong nhu la ten cua bien trong CartController
 
 
 
