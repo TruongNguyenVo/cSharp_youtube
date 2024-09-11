@@ -1,0 +1,105 @@
+﻿*nut debug: f9
+* từ model -> controller -> view
+tải nutget: microsoft entity, sqlserver, tool
+tạo folder database (Data)
+tạo chuỗi kết nối: view -> server explorer
+thêm connectingString trong appsetting:   "ConnectionStrings": {
+    "Data" "Source=.;Initial",
+    "Catalog=hshop2023;Integrated" "Security=True"
+  },
+  
+đến tool -> nuget -> manage control : Scaffold-DbContext "Data Source=.;Initial Catalog=hshop2023;Integrated Security=True" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Data -f
+thêm trong startup.cs:             services.AddDbContext<hshop2023Context>(options =>
+        options.UseSqlServer(Configuration.GetConnectionString("HShop2023")));
+
+// 4/9/2024 - bai 3
+- tao controller (HangHoaController)
+- add view trong view() cua HangHoaController -> razor view -> add
+- copy phan single page va fruit shop tu file shop.html vao index.cshtml (file vua tao o buoc 2)
+- //view component 
+- tao thu muc ViewComponents
+- tao class CategoryViewComponent
+- ket noi co so du lieu (hshop2023Context)
+- viet code trong categoryviewcomponent
+- tao thu muc viewModels
+- tao class CategoryViewModel trong thu muc viewmodels
+- viet code trong categoryviewmodel
+- sua code trong categoryviewcomponent
+- tao thu muc Components (co chu 's') trong Shared
+- tao thu muc Category trong Components
+- tao View (Default.cshtml) trong Category
+- viet code trong Default.cshtml
+- vao shop.html tim de phan category
+- paste vao Default.cshtml
+- vao Index.cshtml trong HangHoa va cat phan category trong file do
+- them phan  @await Component.InvokeAsync("Category")
+- sua code trong Default.cshtml (chu y phan asp-controller, asp-action, asp-route-category)
+- vao HangHoaController (int? loai) => nhan hoac khong nhan
+
+4/9/2024 - bai 4
+- tao HangHoaViewModel
+- ket noi co so du lieu trong HangHoaController
+- viet code trong HangHoaController
+- qua View (chuoi phai -> Go to View)
+- bỏ tất cả hình ảnh vào wwwroot
+- them hinh anh (<img src="~/Hinh/HangHoa/@item.Hinh")
+10/9/2024 - bai 4 search
+- tao view (_danhsachhanghoa) trong share
+- copy single page va foot end
+- single page (@RenderSection("BreadCum", required:false))
+- them trong index.cshtml cua Hang hoa (Layout = "_DanhSachHangHoa";)
+- sua code trong index.cshtml
+- them render body trong danhsachhanghoa
+- sua code trong index.cshtml
+- them code trong HangHoaController
+- sua phan search trong _DanhSachHangHoa: them form
+- them view search (them layout danhsachhanghoa)
+
+//// search tren customer
+- them @render section trong _layoutcustomer (@RenderSection("Scripts", required:false))
+- them code trong _layoutcustomer
+- them id searchText, searchButton trong input, span
+- viet code jquery trong layoutcustomer
+
+///// chi tiet hang hoa
+- tao View ProductItem trong HangHoa
+- copy code trong Index.cshtml
+- them the a trong ProductItem
+- sai await particalArcy trong Index.cshtml va Search.cshtml
+- tao phuong thuc Detail (IActionResult) trong HangHoaController
+- them PageNotFound trong HomeController
+- tao View trong PageNotFound, them code vao
+- code trong hanghoacontroller
+- co the truyen qua cshtml bang tempdata
+- tao view detail
+- them ChiTietHangHoa trong HangHoaViewModel
+- viet result trong Detail cua HangHoaController
+- them model.chitiethanghoa trong detail.cshtml
+- copy single product trong shop-detail vao detail.cshtml
+- them (asp-controller="HangHoa" asp-action="Index") de truy van toi locahost:port/HangHoa
+- chen category trong trang detail bang (@await Component.InvokeAsync("Category"))
+
+11/9/2024 tao TimKiemPanel
+- tao View (TimKiemPanel) trong Shared
+- them (@await Html.PartialAsync("_TimKiemPanel")) trong detail
+- đẩy thẻ chứa tìm kiếm trong DanhSachHangHoa vao _TimKiemPanel
+- 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
