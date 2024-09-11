@@ -41,3 +41,5 @@ D:\nguyen\đại học\HK 5\Đồ án Hệ thống thông tin 1\test\ECommerceMV
 D:\nguyen\đại học\HK 5\Đồ án Hệ thống thông tin 1\test\ECommerceMVC\ECommerceMVC\obj\Debug\netcoreapp2.2\Razor\Views\HangHoa\Search.g.cshtml.cs
 D:\nguyen\đại học\HK 5\Đồ án Hệ thống thông tin 1\test\ECommerceMVC\ECommerceMVC\obj\Debug\netcoreapp2.2\Razor\Views\HangHoa\ProductItem.g.cshtml.cs
 D:\nguyen\đại học\HK 5\Đồ án Hệ thống thông tin 1\test\ECommerceMVC\ECommerceMVC\obj\Debug\netcoreapp2.2\Razor\Views\Home\PageNotFound.g.cshtml.cs
+D:\nguyen\đại học\HK 5\Đồ án Hệ thống thông tin 1\test\ECommerceMVC\ECommerceMVC\obj\Debug\netcoreapp2.2\Razor\Views\HangHoa\Detail.g.cshtml.cs
+D:\nguyen\đại học\HK 5\Đồ án Hệ thống thông tin 1\test\ECommerceMVC\ECommerceMVC\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_TimKiemPanel.g.cshtml.cs

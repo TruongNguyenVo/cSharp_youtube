@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using ECommerceMVC.Data;
 using Microsoft.AspNetCore.Mvc;
-
 using ECommerceMVC.ViewModels;
 using Microsoft.EntityFrameworkCore;
 
@@ -70,8 +69,23 @@ namespace ECommerceMVC.Controllers
                 TempData["Message"] = "Sản phẩm không có mã";
                 return RedirectToAction("PageNotFound", "Home");
             }
+            var result = new ChiTietHangHoaViewModel
+            {
+                MaHH = data.MaHh,
+                TenHH = data.TenHh,
+                Gia = data.DonGia ?? 0,
+                ChiTiet = data.MoTa ?? string.Empty,
+                Hinh = data.Hinh ?? string.Empty,
+                MoTaNgan = data.MoTa ?? string.Empty,
+                TenLoai = data.MaLoaiNavigation.TenLoai,
+                SoLuongTon = 10, //check sau
+                DiemDanhGia = 5 //check sau
 
-            return View(data);
+
+
+            };
+            return View(result);
         }
+
     }
 }
