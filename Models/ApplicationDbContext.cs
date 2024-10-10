@@ -15,5 +15,6 @@ namespace WebApplication1.Models
 
         public DbSet<Category> Categories { get; set; }
         public DbSet<WebApplication1.Models.Product> Product { get; set; } = default!;
+        public DbSet<WebApplication1.Models.User> User { get; set; } = default!;
     }
 }
