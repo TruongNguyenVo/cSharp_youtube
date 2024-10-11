@@ -15,6 +15,7 @@ namespace WebApplication1.Models
 
         public DbSet<Category> Categories { get; set; }
         public DbSet<WebApplication1.Models.Product> Product { get; set; } = default!;
+        public DbSet<WebApplication1.Models.ProductImage> ProductImage { get; set; } = default!;
         public DbSet<WebApplication1.Models.User> User { get; set; } = default!;
         public DbSet<WebApplication1.Models.Order> Order { get; set; } = default!;
     }

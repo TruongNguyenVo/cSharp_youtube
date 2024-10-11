@@ -99,6 +99,28 @@ namespace WebApplication1.Migrations
                     b.ToTable("Product");
                 });
 
+            modelBuilder.Entity("WebApplication1.Models.ProductImage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ImgURL")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("ProductImage");
+                });
+
             modelBuilder.Entity("WebApplication1.Models.User", b =>
                 {
                     b.Property<int>("Id")
@@ -142,9 +164,25 @@ namespace WebApplication1.Migrations
                     b.Navigation("Category");
                 });
 
+            modelBuilder.Entity("WebApplication1.Models.ProductImage", b =>
+                {
+                    b.HasOne("WebApplication1.Models.Product", "Product")
+                        .WithMany("ProductImages")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("WebApplication1.Models.Category", b =>
                 {
                     b.Navigation("product");
+                });
+
+            modelBuilder.Entity("WebApplication1.Models.Product", b =>
+                {
+                    b.Navigation("ProductImages");
                 });
 #pragma warning restore 612, 618
         }

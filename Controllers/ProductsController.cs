@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -12,6 +13,7 @@ namespace WebApplication1.Controllers
     public class ProductsController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
         public ProductsController(ApplicationDbContext context)
         {
@@ -21,8 +23,7 @@ namespace WebApplication1.Controllers
         // GET: Products
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Product.Include(p => p.Category);
-            return View(await applicationDbContext.ToListAsync());
+            return View(await _context.Product.ToListAsync());
         }
 
         // GET: Products/Details/5
@@ -34,7 +35,6 @@ namespace WebApplication1.Controllers
             }
 
             var product = await _context.Product
-                .Include(p => p.Category)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (product == null)
             {
@@ -47,7 +47,6 @@ namespace WebApplication1.Controllers
         // GET: Products/Create
         public IActionResult Create()
         {
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Name");
             return View();
         }
 
@@ -56,15 +55,28 @@ namespace WebApplication1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Price,Description,ImagePath,CategoryId")] Product product)
+        public async Task<IActionResult> Create([Bind("Id,Name,Description,Price")] Product product)
         {
             if (ModelState.IsValid)
             {
+                // Kiểm tra file có được tải lên không
+                if (product.File != null && product.File.Length > 0)
+                {
+                    var filePath = Path.Combine(_webHostEnvironment.WebRootPath, "uploads", product.File.FileName);
+
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await product.File.CopyToAsync(stream);
+                    }
+
+                    // Lưu thông tin sản phẩm vào cơ sở dữ liệu (nếu cần)
+                    // ...
+                    return RedirectToAction("Index");
+                }
                 _context.Add(product);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Name", product.CategoryId);
             return View(product);
         }
 
@@ -81,7 +93,6 @@ namespace WebApplication1.Controllers
             {
                 return NotFound();
             }
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Name", product.CategoryId);
             return View(product);
         }
 
@@ -90,7 +101,7 @@ namespace WebApplication1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Price,Description,ImagePath,CategoryId")] Product product)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description,Price")] Product product)
         {
             if (id != product.Id)
             {
@@ -117,7 +128,6 @@ namespace WebApplication1.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Name", product.CategoryId);
             return View(product);
         }
 
@@ -130,7 +140,6 @@ namespace WebApplication1.Controllers
             }
 
             var product = await _context.Product
-                .Include(p => p.Category)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (product == null)
             {
