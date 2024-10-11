@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using WebApplication1.Models;
 
@@ -20,17 +20,26 @@ namespace WebApplication1.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Index(IFormFile file)
+        public async Task<IActionResult> Index(List<IFormFile> files)
         {
-            string uploadFolder = Path.Combine(_webHostEnvironment.WebRootPath, "uploads");
-            
-            string fileName = Path.GetFileName(file.FileName);
-            string fileSavePath = Path.Combine(uploadFolder, fileName);
+            string uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "uploads");
 
-            using (FileStream stream = new FileStream(fileSavePath, FileMode.Create)) { 
-                await file.CopyToAsync(stream);
+            if (!Directory.Exists(uploadsFolder))
+            {
+                Directory.CreateDirectory(uploadsFolder);
             }
-            ViewBag.Message = fileName + " uploaded successfully";
+
+            foreach (var file in files)
+            {
+                string fileName = Path.GetFileName(file.FileName);
+                string fileSavePath = Path.Combine(uploadsFolder, fileName);
+
+                using (FileStream stream = new FileStream(fileSavePath, FileMode.Create))
+                {
+                    await file.CopyToAsync(stream);
+                }
+                ViewBag.Message += string.Format("<b>{0}</b> uploaded successfully. <br/>", fileName);
+            }
 
             return View();
         }

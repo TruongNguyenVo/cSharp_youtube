@@ -13,11 +13,11 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 
-// Giới hạn kích thước tệp tối đa (ví dụ: 10 MB)
-builder.Services.Configure<FormOptions>(options =>
-{
-    options.MultipartBodyLengthLimit = 10 * 1024 * 1024; // 10 MB
-});
+//// Giới hạn kích thước tệp tối đa (ví dụ: 10 MB)
+//builder.Services.Configure<FormOptions>(options =>
+//{
+//    options.MultipartBodyLengthLimit = 10 * 1024 * 1024; // 10 MB
+//});
 /////
 var app = builder.Build();
 // Configure the HTTP request pipeline.
