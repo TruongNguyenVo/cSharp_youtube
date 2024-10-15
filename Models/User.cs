@@ -8,21 +8,24 @@ namespace WebApplication1.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        [EmailAddress]
+        //[EmailAddress]
         public string Email { get; set; }
-        [Required]
+        //[Required]
         public string Password { get; set; }
 
-        [Required]
-        [PasswordPropertyText]
-        [NotMapped]
-        [Compare("Password", ErrorMessage = "Mật khẩu xác nhận không khớp")]
-        public string ConfirmPassword { get; set; }
+        //[Required]
+        //[PasswordPropertyText]
+        //[NotMapped]
+        //[Compare("Password", ErrorMessage = "Mật khẩu xác nhận không khớp")]
+        //public string ConfirmPassword { get; set; }
 
-        [DefaultValue("Nam")]
-        [RegularExpression(@"^(Nam|Nữ|Không xác định)$",ErrorMessage = "Chỉ nhận các giá trị Nam, Nữ, Hoặc Không xác định.")]
+        //[DefaultValue("Nam")]
+        //[RegularExpression(@"^(Nam|Nữ|Không xác định)$",ErrorMessage = "Chỉ nhận các giá trị Nam, Nữ, Hoặc Không xác định.")]
         public string Gender { get; set; }
-        public int Test { get; set; }
+        //public int Test { get; set; }
+
+        //public Manager Manager  { get; set; }
+        //public Customer Customer { get; set; }
 
     }
 }
