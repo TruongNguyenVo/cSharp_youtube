@@ -20,5 +20,9 @@ namespace WebApplication1.Models
         public DbSet<WebApplication1.Models.Order> Order { get; set; } = default!;
         public DbSet<WebApplication1.Models.Customer> Customers { get; set; } = default!;
         public DbSet<WebApplication1.Models.Manager> Managers { get; set; } = default!;
+
+
+
     }
+
 }

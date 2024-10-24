@@ -31,14 +31,16 @@ namespace WebApplication1.Controllers
 
             foreach (var file in files)
             {
+
                 string fileName = Path.GetFileName(file.FileName);
                 string fileSavePath = Path.Combine(uploadsFolder, fileName);
-
+                // Sử dụng Replace để có đường dẫn tương đối
+                string relativePath = fileSavePath.Replace(_webHostEnvironment.WebRootPath, "");
                 using (FileStream stream = new FileStream(fileSavePath, FileMode.Create))
                 {
                     await file.CopyToAsync(stream);
                 }
-                ViewBag.Message += string.Format("<b>{0}</b> uploaded successfully. <br/>", fileName);
+                ViewBag.Message += string.Format("<b>{0}</b> uploaded successfully. <br/>", relativePath);
             }
 
             return View();
